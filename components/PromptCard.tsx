@@ -11,7 +11,7 @@ const PromptCard = ({
   handleDelete,
   handleTagClick,
 }: any) => {
-  const { data: session } = useSession();
+  const { data: session }: any = useSession();
   const pathName = usePathname();
   const router = useRouter();
 
@@ -28,7 +28,7 @@ const PromptCard = ({
   const handleCopy = () => {
     setCopied(post.prompt);
     navigator.clipboard.writeText(post.prompt);
-    setTimeout(() => setCopied(false), 3000);
+    setTimeout(() => setCopied(""), 3000);
   };
 
   return (

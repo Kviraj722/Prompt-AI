@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
-  const { data: session } = useSession();
+  const { data: session }: any = useSession();
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -14,7 +14,7 @@ const Nav = () => {
   useEffect(() => {
     (async () => {
       setLoading(true);
-      const res = await getProviders();
+      const res: any = await getProviders();
       setProviders(res);
       setLoading(false);
     })();
@@ -41,7 +41,11 @@ const Nav = () => {
               Create Post
             </Link>
 
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button
+              type="button"
+              onClick={() => signOut}
+              className="outline_btn"
+            >
               Sign Out
             </button>
 
@@ -58,7 +62,7 @@ const Nav = () => {
         ) : (
           <>
             {providers &&
-              Object.values(providers).map((provider) => (
+              Object.values(providers).map((provider: any) => (
                 <button
                   type="button"
                   key={provider.name}
@@ -72,7 +76,6 @@ const Nav = () => {
               ))}
           </>
         )}
-        
       </div>
 
       {/* Mobile Navigation */}
@@ -120,7 +123,7 @@ const Nav = () => {
         ) : (
           <>
             {providers &&
-              Object.values(providers).map((provider) => (
+              Object.values(providers).map((provider: any) => (
                 <button
                   type="button"
                   key={provider.name}
