@@ -16,11 +16,9 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete }: any) => {
               post={post}
               handleEdit={() => handleEdit && handleEdit(post)}
               handleDelete={() => handleDelete && handleDelete(post)}
-
             />
           ))}
       </div>
-      
     </section>
   );
 };

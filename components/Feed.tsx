@@ -2,24 +2,27 @@
 import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
 import PromptCardList from "./PromptCardList";
+import { ClipLoader } from "react-spinners";
 
 const Feed = () => {
   const [post, setPost] = useState();
   const [searchText, setSearchText] = useState();
+  const [loading, setLoading] = useState(false);
   const handleSearchChange = (e: any) => {
     // e.preventDefuelt();
   };
-
   useEffect(() => {
     const fetchPosts = async () => {
+      console.log("Loading ", loading);
+      setLoading(true);
       const response = await fetch("/api/prompt");
       const data = await response.json();
       setPost(data);
+      setLoading(false);
     };
 
     fetchPosts();
   }, []);
-  console.log("Post =>", post);
   return (
     <section className="feed">
       <form className="relative w-full flex-center">
@@ -33,7 +36,16 @@ const Feed = () => {
         />
       </form>
 
-      <PromptCardList data={post} handleTagClick={() => {}} />
+      {loading ? (
+        <ClipLoader
+          color="blue_gradient"
+          loading={loading}
+          size={50}
+          className="mt-5"
+        />
+      ) : (
+        <PromptCardList data={post} handleTagClick={() => {}} />
+      )}
     </section>
   );
 };
