@@ -25,7 +25,7 @@ const Feed = () => {
   }, []);
   return (
     <section className="feed">
-      <form className="relative w-full flex-center">
+      {/* <form className="relative w-full flex-center">
         <input
           type="text"
           placeholder="Search for tag or a username "
@@ -34,7 +34,7 @@ const Feed = () => {
           required
           className="search_input peer"
         />
-      </form>
+      </form> */}
 
       {loading ? (
         <ClipLoader
