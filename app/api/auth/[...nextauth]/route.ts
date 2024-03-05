@@ -7,7 +7,7 @@ import { custom } from "openid-client";
 custom.setHttpOptionsDefaults({
   timeout: 10000,
 });
-export const maxDuration = 10000
+// export const maxDuration = 10000
 const handler = NextAuth({
   providers: [
     GoogleProvider({
