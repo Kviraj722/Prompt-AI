@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
 import PromptCardList from "./PromptCardList";
 import { ClipLoader } from "react-spinners";
+import NotFound from "./NotFound";
 
 const Feed = () => {
-  const [post, setPost] = useState();
+  const [post, setPost] = useState<any>([]);
   const [searchText, setSearchText] = useState();
   const [loading, setLoading] = useState(false);
   const handleSearchChange = (e: any) => {
@@ -36,6 +37,7 @@ const Feed = () => {
         />
       </form> */}
 
+
       {loading ? (
         <ClipLoader
           color="blue_gradient"
@@ -43,6 +45,10 @@ const Feed = () => {
           size={50}
           className="mt-5"
         />
+      ) : post.length == 0 ? (
+        <div>
+          <NotFound />
+        </div>
       ) : (
         <PromptCardList data={post} handleTagClick={() => {}} />
       )}
